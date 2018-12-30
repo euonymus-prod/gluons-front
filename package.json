@@ -4,6 +4,10 @@
   "private": true,
   "description": "This is gluons' SPA on a react project",
   "author": "euonymus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/euonymus-prod/gluons-front"
+  },
   "license": "ISC",
   "dependencies": {
     "react": "^16.7.0",
