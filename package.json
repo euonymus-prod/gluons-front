@@ -2,6 +2,9 @@
   "name": "gluons",
   "version": "0.1.0",
   "private": true,
+  "description": "This is gluons' SPA on a react project",
+  "author": "euonymus",
+  "license": "ISC",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
