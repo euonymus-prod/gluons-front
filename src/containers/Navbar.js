@@ -7,7 +7,8 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 // component
 import SearchBar from '../components/SearchBar'
-// style
+// design
+import logo from '../assets/images/logo.gif'
 import '../assets/styles/Navbar.css'
 
 class Navbar extends Component {
@@ -49,7 +50,7 @@ class Navbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link to="/" className="navbar-brand"><img src="/img/logo.gif" alt="gluons" /></Link>
+            <Link to="/" className="navbar-brand"><img src={logo} alt="gluons" /></Link>
             {this.renderSearchBar()}
           </div>
 

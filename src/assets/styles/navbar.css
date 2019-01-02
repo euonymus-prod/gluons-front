@@ -1,3 +1,14 @@
+@media screen and (max-width: 991px) {
+    .navbar {
+	margin-bottom:0;
+    }
+}
+@media screen and (min-width: 992px) {
+    .navbar-form .form-control {
+	width:300px !important;
+    }
+}
+
 .navbar-header img {
     height:25px;
 }
@@ -5,3 +16,34 @@
     margin:0px;
     padding:8px;
 }
+
+.navbar-nav>li>button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+.nav>li>button {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+}
+.nav-pills>li>button {
+    border-radius: 4px;
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.nav-pills>li.active>button, .nav-pills>li.active>button:focus, .nav-pills>li.active>button:hover {
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.dropdown-menu>li>button {
+    margin: 5px 15px 5px 25px;
+    color: #777;
+}
+button.dropdown-toggle {
+    padding: 5px 15px 5px 15px;
+    color: #777;
+}
+

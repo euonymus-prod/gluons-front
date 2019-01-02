@@ -1,28 +1,50 @@
 import React, { Component } from 'react'
-import logo from '../assets/images/logo.svg'
-import '../assets/styles/App.css'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+// component
+import Navbar from '../containers/Navbar'
+import SearchBar from './SearchBar'
+import TopPickups from '../containers/TopPickups'
+// design
+import logo from '../assets/images/logo.gif'
+import '../assets/styles/Home.css'
 
-class App extends Component {
+class Home extends Component {
+  static propTypes = {
+	  intl: intlShape.isRequired
+  }
+
+  componentDidMount() {
+	  document.title = this.props.intl.formatMessage(
+	    {
+		    id: 'title_home',
+		    defaultMessage: "Search hidden relations on your favorite things, people, company... -\ngluons"
+	    }
+	  )
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Navbar />
+        <div className="container">
+          <div className="logo-top">
+            <img src={logo} alt="gluons" />
+          </div>
+
+          <div className="home">
+            <p className="text-center">
+              <FormattedMessage
+                id="message_home_main"
+                defaultMessage={`Search hidden relations on your favorite things, people, company...`} />
+            </p>
+
+            <SearchBar type="home" />
+            <TopPickups />
+          </div>
+
+        </div>
       </div>
     )
   }
 }
-
-export default App
+export default injectIntl(Home)

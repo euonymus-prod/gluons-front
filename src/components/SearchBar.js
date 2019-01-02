@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom"
 import { injectIntl, intlShape } from 'react-intl'
+// design
+import '../assets/styles/SearchBar.css'
 
 class SearchBar extends Component {
   static propTypes = {

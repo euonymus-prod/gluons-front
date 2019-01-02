@@ -1,0 +1,11 @@
+.logo-top {
+    max-width:500px;
+    margin:20px auto 0 auto;
+    padding:30px;
+}
+.home {
+    font-size: large;
+}
+.logo-top img {
+    width:100%;
+}
