@@ -3,7 +3,7 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 // component
 import Navbar from '../containers/Navbar'
 import SearchBar from './SearchBar'
-import TopPickups from '../containers/TopPickups'
+import TopPickups from '../components/TopPickups'
 // design
 import logo from '../assets/images/logo.gif'
 import '../assets/styles/Home.css'
