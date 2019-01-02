@@ -1,10 +1,11 @@
-import _ from 'lodash'
 // react
 import React, { Component } from 'react'
 // redux
 import { connect } from 'react-redux'
 // component
-// import TopPickupDetail from '../components/top_pickup_detail'
+import TopPickupDetail from '../components/TopPickupDetail'
+// design
+import '../assets/styles/TopPickups.css'
 
 class TopPickups extends Component {
   state = {
@@ -12,18 +13,19 @@ class TopPickups extends Component {
   }
 
   componentDidMount() {
+    this.setState({ pickups: dummyData })
   }
 
   renderPickups() {
 	  const { pickups } = this.state
-	  return _.map(pickups, pickup => {
+	  return pickups.map(pickup => {
 	    return (
         <div key={pickup.id} className="col-md-3">
+          <TopPickupDetail pickup={pickup}/>
         </div>
 	    )
 	  })
   }
-  // <TopPickupDetail pickup={pickup}/>
 
   render () {
 	  return (
@@ -36,3 +38,166 @@ class TopPickups extends Component {
   }
 }
 export default connect(state => state, { })(TopPickups)
+
+const dummyData = [
+  {
+    id: "1",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "2",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "3",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "4",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "5",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "6",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "7",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+  {
+    id: "8",
+    quark_type_id: 2,
+    name: "絢子女王",
+    image_path: "/img/no_image.jpg",
+    description: "あやこじょおう",
+    start: "1990-09-15T00:00:00+09:00",
+    end: null,
+    is_momentary: false,
+    start_accuracy: "",
+    end_accuracy: "",
+    url: "",
+    affiliate: "",
+    gender: null,
+    type: "active",
+    user_id: 1,
+    last_modified_user: 1,
+    created: "2016-11-01T00:00:00+09:00",
+    modified: "2016-11-01T00:00:00+09:00"
+  },
+]
