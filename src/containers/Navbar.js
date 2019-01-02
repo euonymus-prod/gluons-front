@@ -5,6 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 // redux
 import { connect } from 'react-redux'
+// constants
+import { AUTH_TOKEN } from '../constants'
 // component
 import SearchBar from '../components/SearchBar'
 // design
@@ -39,6 +41,7 @@ class Navbar extends Component {
   }
 
   render () {
+    const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
@@ -65,7 +68,16 @@ class Navbar extends Component {
               </li>
             </ul>
 
-            
+            {(() => { if (authToken) { return (
+               <ul className="nav navbar-nav navbar-right">
+               </ul>
+            );} else { return (
+               <ul className="nav navbar-nav navbar-right">
+                 <li><Link to="/login">Login</Link></li>
+                 <li><Link to="/signup">Signup</Link></li>
+               </ul>
+            );} })()}
+
           </div>
 
         </div>
