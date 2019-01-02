@@ -1,14 +1,14 @@
 // general
 // react
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 // redux
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 // component
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/SearchBar'
 // style
-import '../assets/styles/Navbar.css';
+import '../assets/styles/Navbar.css'
 
 class Navbar extends Component {
   onLogoutClick = () => {
@@ -27,14 +27,14 @@ class Navbar extends Component {
 		    withSearchBar = false
 	    }
 	    return null
-	  });
+	  })
 
     if (withSearchBar) {
       return (
         <SearchBar type="navbar" />
-      );
+      )
     }
-    return '';
+    return ''
   }
 
   render () {
@@ -72,4 +72,4 @@ class Navbar extends Component {
     )
   }
 }
-export default withRouter(connect(state => state, { })(Navbar));
+export default withRouter(connect(state => state, { })(Navbar))

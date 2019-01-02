@@ -1,7 +1,7 @@
 // react
-import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
-import { injectIntl, intlShape } from 'react-intl';
+import React, { Component } from 'react'
+import { withRouter } from "react-router-dom"
+import { injectIntl, intlShape } from 'react-intl'
 
 class SearchBar extends Component {
   static propTypes = {
@@ -9,7 +9,7 @@ class SearchBar extends Component {
   }
 
   constructor(props) {
-	  super(props);
+	  super(props)
 
 	  this.state = {
 	    value: '',
@@ -17,12 +17,12 @@ class SearchBar extends Component {
   }
 
   handleSubmit = (event) => {
-	  event.preventDefault();
-	  this.props.history.push(`/subjects/search/${this.state.value}`);
+	  event.preventDefault()
+	  this.props.history.push(`/subjects/search/${this.state.value}`)
   }
 
   onInputChange(value) {
-    this.setState({value});
+    this.setState({value})
   }
 
   render() {
@@ -67,7 +67,7 @@ class SearchBar extends Component {
            <button className="btn btn-primary" type="submit">Gluons Search</button>
         );} })()}
       </form>
-	  );
+	  )
   }
 }
-export default withRouter(injectIntl(SearchBar));
+export default withRouter(injectIntl(SearchBar))

@@ -1,8 +1,8 @@
 // react
-import React, { Component } from 'react';
-import { Link, withRouter } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link, withRouter } from "react-router-dom"
 // redux
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 
 class QuarkNav extends Component {
@@ -27,4 +27,4 @@ class QuarkNav extends Component {
 	  )
   }
 }
-export default withRouter(connect(state => state, { })(QuarkNav));
+export default withRouter(connect(state => state, { })(QuarkNav))

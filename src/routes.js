@@ -1,16 +1,16 @@
 // react
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 // redux
-import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { LastLocationProvider } from 'react-router-last-location';
+import { connect } from 'react-redux'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { LastLocationProvider } from 'react-router-last-location'
 
 // component
 import ScrollToTop   from './components/ScrollToTop'
-import GlobalFooter  from './components/GlobalFooter';
-import Terms         from './components/Terms';
-import Privacy       from './components/Privacy';
-import Home          from './components/Home';
+import GlobalFooter  from './components/GlobalFooter'
+import Terms         from './components/Terms'
+import Privacy       from './components/Privacy'
+import Home          from './components/Home'
 // style
 //import './assets/styles/main.css'
 
@@ -44,4 +44,4 @@ class AppRoutes extends Component {
   }
 }
 
-export default connect(state => state, {})(AppRoutes);
+export default connect(state => state, {})(AppRoutes)
