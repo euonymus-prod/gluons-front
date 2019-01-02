@@ -6,11 +6,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
 // component
-import ScrollToTop   from './components/scroll-to-top'
-import GlobalFooter  from './components/global_footer';
-import Terms         from './components/terms';
-import Privacy       from './components/privacy';
-import App           from './components/App';
+import ScrollToTop   from './components/ScrollToTop'
+import GlobalFooter  from './components/GlobalFooter';
+import Terms         from './components/Terms';
+import Privacy       from './components/Privacy';
+import Home          from './components/Home';
 // style
 //import './assets/styles/main.css'
 
@@ -27,7 +27,7 @@ class AppRoutes extends Component {
 
             <ScrollToTop>
               <Switch>
-                <Route exact path='/' component={App}/>
+                <Route exact path='/' component={Home}/>
 
                 {/* components  */}
                 <Route path='/terms' component={Terms}/>

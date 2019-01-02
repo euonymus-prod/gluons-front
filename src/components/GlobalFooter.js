@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import FollowButton from './follow-button'
+import FollowButton from './FollowButton'
 
-import '../assets/styles/sticky-footer.css'
+import '../assets/styles/StickyFooter.css'
 
 class GlobalFooter extends Component {
   render () {
