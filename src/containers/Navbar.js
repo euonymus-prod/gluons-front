@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { AUTH_TOKEN } from '../constants'
 // component
 import SearchBar from '../components/SearchBar'
+import QuarkNav from './QuarkNav'
 // design
 import logo from '../assets/images/logo.gif'
 import '../assets/styles/Navbar.css'
@@ -70,6 +71,29 @@ class Navbar extends Component {
 
             {(() => { if (authToken) { return (
                <ul className="nav navbar-nav navbar-right">
+                 <li><Link to={'/subjects/add'} >New Quark</Link></li>
+
+                 <QuarkNav />
+
+                 <li className="dropdown">
+                   <button className="dropdown-toggle plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{ 'dummy_name' } <span className="caret"></span></button>
+                   <ul className="dropdown-menu">
+                     <li><Link to={`/users/edit/${'dummy_id'}`}>Edit User</Link></li>
+                     <li role="separator" className="divider"></li>
+                     <li className="dropdown-header">Privacy Modes</li>
+
+                     {(() => { if (true) { return (
+                        <li><button type="submit" className="plain" name="4" onClick={this.onPrivacyChangeClick} >Admin</button></li>
+                     );} })()}
+
+                     <li><button type="submit" className="plain" name="1" onClick={this.onPrivacyChangeClick} >Public</button></li>
+                     <li><button type="submit" className="plain" name="2" onClick={this.onPrivacyChangeClick} >Private</button></li>
+                     <li><button type="submit" className="plain" name="3" onClick={this.onPrivacyChangeClick} >All</button></li>
+
+                     <li role="separator" className="divider"></li>
+                     <li><button type="submit" className="plain" onClick={this.onLogoutClick} >Logout</button></li>
+                   </ul>
+                 </li>
                </ul>
             );} else { return (
                <ul className="nav navbar-nav navbar-right">

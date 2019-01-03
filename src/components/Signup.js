@@ -36,7 +36,6 @@ class Signup extends Component {
   }
 
   render() {
-    const authToken = localStorage.getItem(AUTH_TOKEN)
     const { username, email, password } = this.state
     return (
       <div>
