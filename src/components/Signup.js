@@ -36,6 +36,7 @@ class Signup extends Component {
   }
 
   render() {
+    const authToken = localStorage.getItem(AUTH_TOKEN)
     const { username, email, password } = this.state
     return (
       <div>
@@ -46,25 +47,31 @@ class Signup extends Component {
           </div>
           <div>
 
+            <label htmlFor="username">Username</label>
             <input
               value={username}
               onChange={e => this.setState({ username: e.target.value })}
               type="text"
               placeholder="Your name"
+              required="required"
               className="form-control"
             />
+            <label htmlFor="password">Password</label>
             <input
               value={password}
               onChange={e => this.setState({ password: e.target.value })}
               type="password"
               placeholder="Choose a safe password"
+              required="required"
               className="form-control"
             />
+            <label htmlFor="email">Email</label>
             <input
               value={email}
               onChange={e => this.setState({ email: e.target.value })}
               type="text"
               placeholder="Your email address"
+              required="required"
               className="form-control"
             />
 
