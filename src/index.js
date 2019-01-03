@@ -9,7 +9,6 @@ import './assets/styles/index.css'
 import AppRoutes from './routes'
 import * as serviceWorker from './serviceWorker'
 import store from './store'
-
 // intls activities
 import { IntlProvider, addLocaleData } from 'react-intl'
 import ja from 'react-intl/locale-data/ja'
