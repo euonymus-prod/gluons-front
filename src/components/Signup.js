@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import Navbar from '../containers/Navbar'
+import '../assets/styles/Signup.css'
 
 import { AUTH_TOKEN } from '../constants'
 
@@ -35,6 +36,7 @@ class Signup extends Component {
     localStorage.setItem(AUTH_TOKEN, token)
   }
 
+
   render() {
     const { username, email, password } = this.state
     return (
@@ -44,7 +46,7 @@ class Signup extends Component {
           <div className="logo-top">
             <h1>Sign up</h1>
           </div>
-          <div>
+          <div className="form-group center-block input-container-signup">
 
             <label htmlFor="username">Username</label>
             <input
@@ -74,25 +76,20 @@ class Signup extends Component {
               className="form-control"
             />
 
-          </div>
-          <div className="flex mt3">
+            <br />
             <Mutation
               mutation={SIGNUP_MUTATION}
               variables={{ email, password, username }}
               onCompleted={data => this._confirm(data)}
             >
-              {mutation => (
-                <div className="pointer mr2 button" onClick={mutation}>
-                  create account
-                </div>
+              {(mutation, {loading, error}) => (
+                <button className="btn btn-primary" type="submit" onClick={mutation}>
+                  Sign up
+                </button>
               )}
             </Mutation>
           </div>
-
         </div>
-        {/*
-            <button className="btn btn-primary" type="submit">Sign up</button>
-        */}
       </div>
     )
   }

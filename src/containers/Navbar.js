@@ -16,6 +16,8 @@ import '../assets/styles/Navbar.css'
 
 class Navbar extends Component {
   onLogoutClick = () => {
+    localStorage.removeItem(AUTH_TOKEN)
+    window.location.reload()
   }
 
   onPrivacyChangeClick = () => {
