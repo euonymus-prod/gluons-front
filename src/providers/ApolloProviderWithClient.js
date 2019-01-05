@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 // Apollo Client for GraphQL
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
@@ -7,21 +8,10 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { setContext } from 'apollo-link-context'
 import { onError } from "apollo-link-error"
-import LoginUtil from '../utils/LoginUtil'
 
 // Building an Apollo client
 const httpLink = createHttpLink({
   uri: 'http://localhost:8000/graphql/'
-})
-const authLink = setContext((_, { headers }) => {
-  const token = LoginUtil.getToken()
-  return {
-    headers: {
-      ...headers,
-      //authorization: token ? `Brearer ${token}` : ''
-      authorization: token ? `JWT ${token}` : ''
-    }
-  }
 })
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -38,19 +28,55 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 })
 
-const link = ApolloLink.from([
-  errorLink,
-  authLink.concat(httpLink),
-])
-
-const client = new ApolloClient({
-  link,
-  cache: new InMemoryCache()
-})
-
-
 class ApolloProviderWithClient extends Component {
+  state = {
+    client: false
+  }
+
+  componentDidMount() {
+    this.refreshClient()
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (this.props.authToken !== prevProps.authToken) {
+      this.refreshClient()
+    }
+    return null;
+  }
+  
+  componentDidUpdate(prevProps, prevState, snapshot) {
+  }
+
+
+  refreshClient() {
+    const authLink = setContext((_, { headers }) => {
+      const { authToken } = this.props
+      return {
+        headers: {
+          ...headers,
+          //authorization: authToken ? `Brearer ${authToken}` : ''
+          authorization: authToken ? `JWT ${authToken}` : ''
+        }
+      }
+    })
+    const link = ApolloLink.from([
+      errorLink,
+      authLink.concat(httpLink),
+    ])
+
+    const client = new ApolloClient({
+      link,
+      cache: new InMemoryCache()
+    })
+    this.setState({client})
+  }
+
   render() {
+    const { client } = this.state
+    if (!client) {
+      return null
+    }
+
     return (
       <ApolloProvider client={client}>
         {this.props.children}
@@ -58,4 +84,4 @@ class ApolloProviderWithClient extends Component {
     )
   }
 }
-export default ApolloProviderWithClient
+export default connect(state => state)(ApolloProviderWithClient)

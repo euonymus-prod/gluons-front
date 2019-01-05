@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 // container
 import AppRoutes from './routes'
+import LoginCondition from './components/LoginCondition'
 // import InitApp from './containers/init-app'
 // import { initSettings } from './actions/settings'
 
@@ -11,9 +12,9 @@ class Initializer extends React.Component {
   }
   render() {
     return (
-      <div>
+      <LoginCondition>
         <AppRoutes />
-      </div>
+      </LoginCondition>
     )
   }
 }

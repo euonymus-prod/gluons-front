@@ -5,19 +5,17 @@ import { Link, withRouter } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 // redux
 import { connect } from 'react-redux'
-// constants
-import LoginUtil from '../utils/LoginUtil'
 // component
 import SearchBar from '../components/SearchBar'
 import QuarkNav from './QuarkNav'
+import { execLogout } from '../actions/login'
 // design
 import logo from '../assets/images/logo.gif'
 import '../assets/styles/Navbar.css'
 
 class Navbar extends Component {
   onLogoutClick = () => {
-    LoginUtil.logout()
-    window.location.reload()
+    this.props.execLogout()
   }
 
   onPrivacyChangeClick = () => {
@@ -44,6 +42,7 @@ class Navbar extends Component {
   }
 
   render () {
+    const { user } = this.props
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
@@ -70,22 +69,25 @@ class Navbar extends Component {
               </li>
             </ul>
 
-            { LoginUtil.isLoggedIn() && (
+            { user && (
                <ul className="nav navbar-nav navbar-right">
                  <li><Link to={'/subjects/add'} >New Quark</Link></li>
 
                  <QuarkNav />
 
                  <li className="dropdown">
-                   <button className="dropdown-toggle plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{ 'dummy_name' } <span className="caret"></span></button>
+                   <button className="dropdown-toggle plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     { user.username }
+                     <span className="caret"></span>
+                   </button>
                    <ul className="dropdown-menu">
                      <li><Link to={`/users/edit/${'dummy_id'}`}>Edit User</Link></li>
                      <li role="separator" className="divider"></li>
                      <li className="dropdown-header">Privacy Modes</li>
 
-                     {(() => { if (true) { return (
-                        <li><button type="submit" className="plain" name="4" onClick={this.onPrivacyChangeClick} >Admin</button></li>
-                     );} })()}
+                     { user.isSuperuser && (
+                       <li><button type="submit" className="plain" name="4" onClick={this.onPrivacyChangeClick} >Admin</button></li>
+                     )}
 
                      <li><button type="submit" className="plain" name="1" onClick={this.onPrivacyChangeClick} >Public</button></li>
                      <li><button type="submit" className="plain" name="2" onClick={this.onPrivacyChangeClick} >Private</button></li>
@@ -97,7 +99,7 @@ class Navbar extends Component {
                  </li>
                </ul>
             )}
-            { !LoginUtil.isLoggedIn() && (
+            { !user && (
                <ul className="nav navbar-nav navbar-right">
                  <li><Link to="/login">Login</Link></li>
                  <li><Link to="/signup">Signup</Link></li>
@@ -111,4 +113,4 @@ class Navbar extends Component {
     )
   }
 }
-export default withRouter(connect(state => state, { })(Navbar))
+export default withRouter(connect(state => state, { execLogout })(Navbar))

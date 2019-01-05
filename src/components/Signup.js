@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import LoginUtil from '../utils/LoginUtil'
 import Navbar from '../containers/Navbar'
 import '../assets/styles/Signup.css'
 
@@ -25,13 +24,7 @@ class Signup extends Component {
   }
 
   _confirm = async data => {
-    const { token } = data.createUser
-    this._saveUserData(token)
-    this.props.history.push(`/`)
-  }
-  
-  _saveUserData = token => {
-    LoginUtil.login(token)
+    this.props.history.push(`/login`)
   }
 
   render() {

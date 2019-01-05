@@ -1,43 +1,45 @@
-import { AUTH_TOKEN } from '../constants'
+import { AUTH_TOKEN, LOGGED_IN_USER } from '../constants'
 
 class LoginUtil {
-  static login(token) {
-    localStorage.setItem(AUTH_TOKEN, token)
-  }
   static logout() {
     localStorage.removeItem(AUTH_TOKEN)
+    localStorage.removeItem(LOGGED_IN_USER)
+  }
+
+  static saveToken(token) {
+    localStorage.setItem(AUTH_TOKEN, token)
   }
   static getToken() {
     return localStorage.getItem(AUTH_TOKEN)
   }
-  static isLoggedIn() {
-    const token = LoginUtil.getToken()
-    return token ? true : false
+
+  static saveUser(user) {
+		localStorage.setItem(LOGGED_IN_USER, JSON.stringify(user))
+  }
+  static getUser() {
+    return JSON.parse(localStorage.getItem(LOGGED_IN_USER))
   }
 
-  // isLoggedIn(logged_in_user) {
-  // 	  return (logged_in_user && logged_in_user.status && logged_in_user.status === 1);
-  // }
   // isAdmin(logged_in_user) {
   // 	  if (!this.isLoggedIn(logged_in_user)) {
-  // 	    return false;
+  // 	    return false
   // 	  }
-  // 	  return (logged_in_user.role === 'admin');
+  // 	  return (logged_in_user.role === 'admin')
   // }
   // isAuthorized(logged_in_user, quark) {
   // 	  if (!quark || !this.isLoggedIn(logged_in_user)) {
-  // 	    return false;
+  // 	    return false
   // 	  }
   // 	  if (this.isAdmin(logged_in_user)) {
-  // 	    return true;
+  // 	    return true
   // 	  }
   // 	  if (logged_in_user.id === quark.user_id) {
-  // 	    return true;
+  // 	    return true
   // 	  }
   // 	  if (!quark.is_exclusive) {
-  // 	    return true;
+  // 	    return true
   // 	  }
-  // 	  return false;
+  // 	  return false
   // }
 }
-export default LoginUtil;
+export default LoginUtil
