@@ -16,9 +16,6 @@ import Privacy       from './components/Privacy'
 import './assets/styles/routes.css'
 
 class AppRoutes extends Component {
-  componentDidMount() {
-  }
-
   render () {
 	  return (
       <BrowserRouter>
