@@ -12,8 +12,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { setContext } from 'apollo-link-context'
 import { onError } from "apollo-link-error"
-import { AUTH_TOKEN } from './constants'
-
+import LoginUtil from './utils/LoginUtil'
 // component
 import ScrollToTop   from './components/ScrollToTop'
 import GlobalFooter  from './components/GlobalFooter'
@@ -23,14 +22,14 @@ import Login         from './components/Login'
 import Terms         from './components/Terms'
 import Privacy       from './components/Privacy'
 // style
-//import './assets/styles/main.css'
+import './assets/styles/routes.css'
 
 // Building an Apollo client
 const httpLink = createHttpLink({
   uri: 'http://localhost:8000/graphql/'
 })
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKEN)
+  const token = LoginUtil.getToken()
   return {
     headers: {
       ...headers,
@@ -49,6 +48,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     })
   }
   if (networkError) {
+    alert(`[Network error]: ${networkError}`)
     console.log(`[Network error]: ${networkError}`)
   }
 })

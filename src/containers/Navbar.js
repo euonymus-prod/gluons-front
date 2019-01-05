@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl'
 // redux
 import { connect } from 'react-redux'
 // constants
-import { AUTH_TOKEN } from '../constants'
+import LoginUtil from '../utils/LoginUtil'
 // component
 import SearchBar from '../components/SearchBar'
 import QuarkNav from './QuarkNav'
@@ -16,7 +16,7 @@ import '../assets/styles/Navbar.css'
 
 class Navbar extends Component {
   onLogoutClick = () => {
-    localStorage.removeItem(AUTH_TOKEN)
+    LoginUtil.logout()
     window.location.reload()
   }
 
@@ -44,7 +44,6 @@ class Navbar extends Component {
   }
 
   render () {
-    const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
@@ -71,7 +70,7 @@ class Navbar extends Component {
               </li>
             </ul>
 
-            {(() => { if (authToken) { return (
+            { LoginUtil.isLoggedIn() && (
                <ul className="nav navbar-nav navbar-right">
                  <li><Link to={'/subjects/add'} >New Quark</Link></li>
 
@@ -97,12 +96,13 @@ class Navbar extends Component {
                    </ul>
                  </li>
                </ul>
-            );} else { return (
+            )}
+            { !LoginUtil.isLoggedIn() && (
                <ul className="nav navbar-nav navbar-right">
                  <li><Link to="/login">Login</Link></li>
                  <li><Link to="/signup">Signup</Link></li>
                </ul>
-            );} })()}
+            )}
 
           </div>
 

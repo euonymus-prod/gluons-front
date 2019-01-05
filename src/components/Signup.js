@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import LoginUtil from '../utils/LoginUtil'
 import Navbar from '../containers/Navbar'
 import '../assets/styles/Signup.css'
-
-import { AUTH_TOKEN } from '../constants'
-
 
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation($username: String!, $email: String!, $password: String!) {
@@ -33,9 +31,8 @@ class Signup extends Component {
   }
   
   _saveUserData = token => {
-    localStorage.setItem(AUTH_TOKEN, token)
+    LoginUtil.login(token)
   }
-
 
   render() {
     const { username, email, password } = this.state
