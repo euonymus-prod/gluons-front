@@ -4,15 +4,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
-// Apollo Client for GraphQL
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { ApolloLink } from 'apollo-link'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { setContext } from 'apollo-link-context'
-import { onError } from "apollo-link-error"
-import LoginUtil from './utils/LoginUtil'
 // component
 import ScrollToTop   from './components/ScrollToTop'
 import GlobalFooter  from './components/GlobalFooter'
@@ -24,46 +15,6 @@ import Privacy       from './components/Privacy'
 // style
 import './assets/styles/routes.css'
 
-// Building an Apollo client
-const httpLink = createHttpLink({
-  uri: 'http://localhost:8000/graphql/'
-})
-const authLink = setContext((_, { headers }) => {
-  const token = LoginUtil.getToken()
-  return {
-    headers: {
-      ...headers,
-      //authorization: token ? `Brearer ${token}` : ''
-      authorization: token ? `JWT ${token}` : ''
-    }
-  }
-})
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) => {
-      alert(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
-      return console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      )
-    })
-  }
-  if (networkError) {
-    alert(`[Network error]: ${networkError}`)
-    console.log(`[Network error]: ${networkError}`)
-  }
-})
-
-const link = ApolloLink.from([
-  errorLink,
-  authLink.concat(httpLink),
-])
-
-const client = new ApolloClient({
-  link,
-  cache: new InMemoryCache()
-})
-
-
 class AppRoutes extends Component {
   componentDidMount() {
   }
@@ -71,27 +22,24 @@ class AppRoutes extends Component {
   render () {
 	  return (
       <BrowserRouter>
-        <ApolloProvider client={client}>
-          <LastLocationProvider>
-            <div className="main-content">
+        <LastLocationProvider>
+          <div className="main-content">
+            <ScrollToTop>
+              <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route exact path='/signup' component={Signup}/>
+                <Route exact path='/login' component={Login}/>
 
-              <ScrollToTop>
-                <Switch>
-                  <Route exact path='/' component={Home}/>
-                  <Route exact path='/signup' component={Signup}/>
-                  <Route exact path='/login' component={Login}/>
+                {/* components  */}
+                <Route path='/terms' component={Terms}/>
+                <Route path='/privacy' component={Privacy}/>
+              </Switch>
+            </ScrollToTop>
 
-                  {/* components  */}
-                  <Route path='/terms' component={Terms}/>
-                  <Route path='/privacy' component={Privacy}/>
-                </Switch>
-              </ScrollToTop>
+          </div>
+          <GlobalFooter />
 
-            </div>
-            <GlobalFooter />
-
-          </LastLocationProvider>
-        </ApolloProvider>
+        </LastLocationProvider>
       </BrowserRouter>
 	  )
   }
