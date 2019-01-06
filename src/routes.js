@@ -9,7 +9,7 @@ import ScrollToTop   from './components/ScrollToTop'
 import GlobalFooter  from './components/GlobalFooter'
 // pages
 import Home          from './pages/Home'
-import AddGluon      from './pages/AddGluon'
+import AddQuark      from './pages/AddQuark'
 import Signup        from './pages/Signup'
 import Login         from './pages/Login'
 import Terms         from './pages/Terms'
@@ -26,7 +26,7 @@ class AppRoutes extends Component {
             <ScrollToTop>
               <Switch>
                 <Route exact path='/' component={Home}/>
-                <Route exact path='/gluon/add' component={AddGluon}/>
+                <Route exact path='/quark/add' component={AddQuark}/>
                 <Route exact path='/signup' component={Signup}/>
                 <Route exact path='/login' component={Login}/>
                 <Route path='/terms' component={Terms}/>

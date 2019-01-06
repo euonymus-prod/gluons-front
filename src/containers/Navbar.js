@@ -23,7 +23,7 @@ class Navbar extends Component {
 
   renderSearchBar () {
 	  let patterns = ['^/(?!/)$', '^/login/?', '^/signup/?',
-			              '^/subjects/add/?', '^/subjects/edit/', '^/relations/add/?', '^/relations/edit/']
+			              '^/quark/add/?', '^/quark/edit/', '^/gluon/add/?', '^/gluon/edit/']
 
 	  let withSearchBar = true
 	  patterns.map(x => {
@@ -71,7 +71,7 @@ class Navbar extends Component {
 
             { user && (
                <ul className="nav navbar-nav navbar-right">
-                 <li><Link to={'/gluon/add'} >New Quark</Link></li>
+                 <li><Link to={'/quark/add'} >New Quark</Link></li>
 
                  <QuarkNav />
 
