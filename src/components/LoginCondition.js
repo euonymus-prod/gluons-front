@@ -36,7 +36,7 @@ class LoginCondition extends Component {
     if (authToken) {
       this.props.client.query({
         query: ME_QUERY,
-        //options: { fetchPolicy: 'network-only' }
+        fetchPolicy: 'network-only' // Important: This stops using cache return
       }).then(response => {
         const { me } = response.data
         this.props.refreshLogin(me)
