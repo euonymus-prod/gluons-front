@@ -71,7 +71,7 @@ class Navbar extends Component {
 
             { user && (
                <ul className="nav navbar-nav navbar-right">
-                 <li><Link to={'/subjects/add'} >New Quark</Link></li>
+                 <li><Link to={'/gluon/add'} >New Quark</Link></li>
 
                  <QuarkNav />
 

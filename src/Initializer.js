@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 // container
 import AppRoutes from './routes'
-import LoginCondition from './components/LoginCondition'
+import LoginCondition from './containers/LoginCondition'
 // import InitApp from './containers/init-app'
 // import { initSettings } from './actions/settings'
 

@@ -1,3 +1,6 @@
+export const QUARKS_PER_PAGE = 100
+
+// Local Storage -----------------------------------
 export const AUTH_TOKEN      = 'AUTH_TOKEN'
 export const LOGGED_IN_USER  = 'LOGGED_IN_USER'
 

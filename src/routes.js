@@ -7,11 +7,13 @@ import { LastLocationProvider } from 'react-router-last-location'
 // component
 import ScrollToTop   from './components/ScrollToTop'
 import GlobalFooter  from './components/GlobalFooter'
-import Home          from './components/Home'
-import Signup        from './components/Signup'
-import Login         from './components/Login'
-import Terms         from './components/Terms'
-import Privacy       from './components/Privacy'
+// pages
+import Home          from './pages/Home'
+import AddGluon      from './pages/AddGluon'
+import Signup        from './pages/Signup'
+import Login         from './pages/Login'
+import Terms         from './pages/Terms'
+import Privacy       from './pages/Privacy'
 // style
 import './assets/styles/routes.css'
 
@@ -24,10 +26,9 @@ class AppRoutes extends Component {
             <ScrollToTop>
               <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route exact path='/gluon/add' component={AddGluon}/>
                 <Route exact path='/signup' component={Signup}/>
                 <Route exact path='/login' component={Login}/>
-
-                {/* components  */}
                 <Route path='/terms' component={Terms}/>
                 <Route path='/privacy' component={Privacy}/>
               </Switch>

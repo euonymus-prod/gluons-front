@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 // component
 import Navbar from '../containers/Navbar'
-import SearchBar from './SearchBar'
+import SearchBar from '../components/SearchBar'
 import TopPickups from '../components/TopPickups'
 // design
 import logo from '../assets/images/logo.gif'
