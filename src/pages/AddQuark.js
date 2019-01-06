@@ -211,36 +211,44 @@ class AddQuark extends Component {
                 </label>
               </div>
             </div>
-        </fieldset>
+          </fieldset>
 
-        <Mutation
-          mutation={POST_MUTATION}
-          variables={{ name, image_path, description, start, end, start_accuracy, end_accuracy, is_momentary, url, affiliate,
-                       is_private, is_exclusive, quark_type_id, auto_fill }}
-          onCompleted={() => this.props.history.push('/quarks/1')}
-          update={(store, { data: { createQuark } }) => {
-            const first = QUARKS_PER_PAGE
-            const skip = 0
-            const orderBy = 'created_at'
-            const data = store.readQuery({
-              query: QUARKS_QUERY,
-              variables: { first, skip, orderBy }
-            })
-            data.quarks.unshift(createQuark)
-            store.writeQuery({
-              query: QUARKS_QUERY,
-              data,
-              variables: { first, skip, orderBy }
-            })
-          }}
-        >
-          {postMutation => <button className="btn btn-primary" onClick={postMutation}>Submit</button>}
-        </Mutation>
+          <Mutation
+            mutation={POST_MUTATION}
+            variables={{ name, image_path, description, start, end, start_accuracy, end_accuracy, is_momentary, url, affiliate,
+                         is_private, is_exclusive, quark_type_id, auto_fill }}
+            onCompleted={() => this.props.history.push('/quarks/1')}
+            update={(store, { data: { createQuark } }) => {
+              const first = QUARKS_PER_PAGE
+              const skip = 0
+              const orderBy = 'created_at'
 
+              // Note: you need try catch, so error doesn't happen even if QUARKS_QUERY is not yet provided.
+              try {
+                const data = store.readQuery({
+                  query: QUARKS_QUERY,
+                  variables: { first, skip, orderBy }
+                })
+                data.quarks.unshift(createQuark)
+                store.writeQuery({
+                  query: QUARKS_QUERY,
+                  data,
+                  variables: { first, skip, orderBy }
+                })
+              } catch (e) {} // eslint-disable-line
+            }}
+          >
+            {postMutation => <button className="btn btn-primary" onClick={() => {
+              if (!this.state.name) {
+                alert('Name is required')
+                return false
+              }
+              postMutation()
+            }}>Submit</button>}
+          </Mutation>
 
-
-          </div>
-          </div>
+        </div>
+      </div>
     )
   }
 }
