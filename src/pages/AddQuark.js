@@ -113,7 +113,7 @@ class AddQuark extends Component {
                   <input
                     onChange={e => this.setState({auto_fill: !auto_fill})}
                     type="checkbox"
-                    checked={is_exclusive}
+                    checked={auto_fill}
                   />
                   Auto Fill
                 </label>
