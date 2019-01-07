@@ -18,7 +18,7 @@ class QuarkNav extends Component {
       <li className="dropdown">
         <button className="dropdown-toggle plain" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quark <span className="caret"></span></button>
         <ul className="dropdown-menu">
-          <li><Link to={`/subjects/edit/`}>Edit Quark</Link></li>
+          <li><Link to={`/quark/edit/`}>Edit Quark</Link></li>
           <li>
             <button type="submit" className="plain" onClick={this.onDeleteClick}>Delete</button>
           </li>

@@ -9,7 +9,7 @@ class TopPickupDetail extends Component {
 	  let secondpath = '';
 	  return (
       <div className="pickup-link">
-        <Link to={`/subjects/relations/${pickup.name}${secondpath}`} >
+        <Link to={`/gluons/${pickup.name}${secondpath}`} >
           <img src={pickup.image_path} alt={pickup.name}/>
         </Link>
       </div>

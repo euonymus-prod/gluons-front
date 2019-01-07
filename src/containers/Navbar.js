@@ -61,7 +61,7 @@ class Navbar extends Component {
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="/subjects">
+                <Link to="/list">
                   <FormattedMessage
                     id="menu_navbar_list"
                     defaultMessage={`List`} />
