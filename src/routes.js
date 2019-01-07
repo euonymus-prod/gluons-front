@@ -32,6 +32,7 @@ class AppRoutes extends Component {
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/list/:page' component={List}/>
                 <Route exact path='/list' component={List}/>
+                <Route exact path='/search/:keyword/:page' component={Search}/>
                 <Route exact path='/search/:keyword' component={Search}/>
                 <Route exact path='/quark/add' component={AddQuark}/>
                 <Route exact path='/signup' component={Signup}/>
