@@ -26,7 +26,8 @@ class LoginUtil {
   // 	  }
   // 	  return (logged_in_user.role === 'admin')
   // }
-  // isAuthorized(logged_in_user, quark) {
+
+  isAuthorized(logged_in_user, quark) {
   // 	  if (!quark || !this.isLoggedIn(logged_in_user)) {
   // 	    return false
   // 	  }
@@ -39,7 +40,7 @@ class LoginUtil {
   // 	  if (!quark.is_exclusive) {
   // 	    return true
   // 	  }
-  // 	  return false
-  // }
+    return false
+  }
 }
 export default LoginUtil

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { QUARKS_PER_PAGE } from '../constants'
-import { QUARKS_QUERY } from '../components/Quarks'
+import { QUARKS_QUERY } from '../pages/List'
 import Navbar from '../containers/Navbar'
 import InputQuarkTypes from '../components/InputQuarkTypes'
 

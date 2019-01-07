@@ -30,6 +30,7 @@ class AppRoutes extends Component {
             <ScrollToTop>
               <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route exact path='/list/:page' component={List}/>
                 <Route exact path='/list' component={List}/>
                 <Route exact path='/search/:keyword' component={Search}/>
                 <Route exact path='/quark/add' component={AddQuark}/>
