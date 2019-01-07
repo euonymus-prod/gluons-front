@@ -37,34 +37,38 @@ class Signup extends Component {
             <h1>Sign up</h1>
           </div>
           <div className="form-group center-block input-container-signup">
+            <form acceptCharset="utf-8" >
 
-            <label htmlFor="username">Username</label>
-            <input
-              value={username}
-              onChange={e => this.setState({ username: e.target.value })}
-              type="text"
-              placeholder="Your name"
-              required="required"
-              className="form-control"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              value={password}
-              onChange={e => this.setState({ password: e.target.value })}
-              type="password"
-              placeholder="Choose a safe password"
-              required="required"
-              className="form-control"
-            />
-            <label htmlFor="email">Email</label>
-            <input
-              value={email}
-              onChange={e => this.setState({ email: e.target.value })}
-              type="text"
-              placeholder="Your email address"
-              required="required"
-              className="form-control"
-            />
+              <label htmlFor="username">Username</label>
+              <input
+                value={username}
+                onChange={e => this.setState({ username: e.target.value })}
+                type="text"
+                placeholder="Your name"
+                required="required"
+                className="form-control"
+                autoComplete="current-password"
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                value={password}
+                onChange={e => this.setState({ password: e.target.value })}
+                type="password"
+                placeholder="Choose a safe password"
+                required="required"
+                className="form-control"
+                autoComplete="current-password"
+              />
+              <label htmlFor="email">Email</label>
+              <input
+                value={email}
+                onChange={e => this.setState({ email: e.target.value })}
+                type="text"
+                placeholder="Your email address"
+                required="required"
+                className="form-control"
+              />
+            </form>
 
             <br />
             <Mutation
