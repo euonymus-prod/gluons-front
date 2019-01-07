@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl';
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -6,8 +6,8 @@ import Quarks from '../components/Quarks';
 import { QUARKS_PER_PAGE } from '../constants'
 
 export const QUARKS_QUERY = gql`
-  query FeedQuery($first: Int, $skip: Int, $orderBy: String) {
-    quarks(first: $first, skip: $skip, orderBy: $orderBy) {
+  query FeedQuery($search: String, $first: Int, $skip: Int, $orderBy: String) {
+    quarks(search: $search, first: $first, skip: $skip, orderBy: $orderBy) {
       id
       createdAt
       name
@@ -27,7 +27,7 @@ export const QUARKS_QUERY = gql`
         name
       }
     }
-    quarkCount
+    quarkCount(search: $search)
   }
 `
 
@@ -37,6 +37,7 @@ class List extends Component {
   }
 
   componentDidMount() {
+    // TODO: Searchの場合は title を変えた方が良さそう
 	  document.title = "Quarks -\n" +  this.props.intl.formatMessage(
 	    {
 		    id: 'noun_gluons',
@@ -46,20 +47,17 @@ class List extends Component {
   }
 
   _getQueryVariables = () => {
+    const search = this.props.match.params.keyword
     const page = parseInt(this.props.match.params.page, 10)
     const skip = (page - 1) * QUARKS_PER_PAGE
     const first = QUARKS_PER_PAGE
+    // TODO: Searchの場合は orderBy を変えた方が良さそう
     const orderBy = 'created_at'
-    return { first, skip, orderBy }
+    return { search, first, skip, orderBy }
   }
 
   render() {
-    // const quarks = [
-    //   {id: 1, name: 'aa', imagePath: '/img/no_image.jpg', description: 'yey',
-    //    start: '2000-08-07', end: '', startAccuracy: 'month'},
-    //   {id: 2, name: 'bb', imagePath: '/img/no_image.jpg', description: 'yey',
-    //    start: '', end: '2008-04-01', endAccuracy: 'year'},
-    // ]
+    // TODO: Searchの場合は quarkPropertyCaption を変えた方が良さそう
     return (
       <Query query={QUARKS_QUERY} variables={this._getQueryVariables()}>
         {({ loading, error, data }) => {
@@ -68,15 +66,13 @@ class List extends Component {
            if (data.quarkCount === 0) return <div>No Data</div>
 
            return (
-             <Fragment>
-               <Quarks
-                 quarkPropertyCaption="Quarks"
-                 quarks={data.quarks}
-                 quarkCount={data.quarkCount}
-                 numberPerPage={QUARKS_PER_PAGE}
-                 page={parseInt(this.props.match.params.page, 10)}
-               />
-             </Fragment>
+           <Quarks
+             quarkPropertyCaption="Quarks"
+             quarks={data.quarks}
+             quarkCount={data.quarkCount}
+             numberPerPage={QUARKS_PER_PAGE}
+             page={parseInt(this.props.match.params.page, 10)}
+           />
            )
         }}
       </Query>

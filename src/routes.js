@@ -12,7 +12,6 @@ import RedirectComposer from './components/RedirectComposer'
 import Home          from './pages/Home'
 import Main          from './pages/Main'
 import List          from './pages/List'
-import Search        from './pages/Search'
 import AddQuark      from './pages/AddQuark'
 import Signup        from './pages/Signup'
 import Login         from './pages/Login'
@@ -32,8 +31,8 @@ class AppRoutes extends Component {
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/list/:page' component={List}/>
                 <Route exact path='/list' component={List}/>
-                <Route exact path='/search/:keyword/:page' component={Search}/>
-                <Route exact path='/search/:keyword' component={Search}/>
+                <Route exact path='/search/:keyword/:page' component={List}/>
+                <Route exact path='/search/:keyword' component={List}/>
                 <Route exact path='/quark/add' component={AddQuark}/>
                 <Route exact path='/signup' component={Signup}/>
                 <Route exact path='/login' component={Login}/>
