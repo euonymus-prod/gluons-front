@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 class List extends Component {
   render() {
-    return 'List'
+    return (
+      <div>List</div>
+    )
   }
 }
 export default List

@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 class Search extends Component {
   render() {
-    return 'Search'
+    return (
+      <div>Search</div>
+    )
   }
 }
 export default Search
