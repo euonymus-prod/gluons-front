@@ -23,8 +23,12 @@ export const QUARK_QUERY = gql`
       quarkType {
         id
         name
-        qtypeProperties {
+        havingQuarkProperties {
           id
+          quarkProperty {
+            id
+            name
+          }
         }
       }
     }
